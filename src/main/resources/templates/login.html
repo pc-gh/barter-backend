@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/barter/css/index.css">
+     <script type="text/javascript" src="/barter/js/jquery-3.4.1.js"></script>
+    <!-- <script type="text/javascript" src="index.js"></script> -->
+    <title>用户登录</title>
+
+</head>
+<body>
+    <form action="#" name="landform" class="box">
+        <div class="title">
+            <!-- Welcome to my personal page！ -->
+            <image src="/barter/image/logo.png"></image>
+        </div>
+        <div class="form">
+            <div class="info">
+                <div class="username">
+                    <div class="inputusername">
+                        用户名：
+                        <input type="text" name="username" id="username">
+                    </div>
+                </div>
+                <div class="password">
+                    <div class="inputpassword">
+                        密码：
+                        <input type="password" name="password" id="password">
+                    </div>
+                </div>
+            </div>
+            <div class="click">
+                <button id="landtest">登陆</button>
+                
+
+            </div>
+            
+        </div>
+    </form>
+    <div class="click_3">
+        
+        <button id="registerTest" onclick="javascript:window.location.href='./register.html'">注册</button>
+        
+
+    </div>
+
+
+</body>
+
+<script>
+    $(function () {
+
+        //登录事件
+        $("#landtest").click(
+            function() {
+                console.log("进入到landtest()函数！！！");
+                let msg = false;
+                $.post({
+                    url: "user/login/"+$("#username").val()+"/"+$("#password").val(),//后端接口绝对路径
+                    //data-type
+                    // data: $("#userName")+"/"+$("#password"),
+                    dataType:"json",
+                    success: function (data) {
+                        console.log("ajax回调成功！！！");
+                        console.log(data);
+                        console.log("data.code:"+data.code);
+                        // console.log(data.);
+                        // console.log(data);
+                        // console.log(data);
+
+                        if (data.code == 200) {
+                            msg = true;
+                        } else {
+                            msg = false;
+                        }
+                    },
+                    error: function (data) {
+                        window.location.href="/barter/login";
+                        console.log("ajax回调失败！！！");
+
+                    },
+                    complete: function (data) {
+                        if(msg == true){
+                            window.location.href="./mine.html";
+                            // console.log("登录成功！！！");
+
+
+                        }else{
+                            window.location.href="./login.html";
+                            // console.log("登录失败！！！");
+
+                        }
+                    }
+
+                });
+
+
+
+        })
+    })
+
+</script>
+
+</html>
+
+
+
+
+
+
+    

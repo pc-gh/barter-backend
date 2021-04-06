@@ -1,0 +1,27 @@
+server:
+  port: 9285
+  servlet:
+    context-path: /barter
+
+#springboot整合jdbc配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/barter?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    #    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix=: .html
+  #    页面跳转时templates资源可访问
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+
+#整合springboot去mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.transfar.mapper
+
+
+

@@ -1,0 +1,119 @@
+.form{
+    height: 360px;
+    width:  600px;
+    margin: 60px auto;
+    border: 1px solid green;
+    background-color: paleturquoise;
+}
+
+.info{
+    width: 400px;
+    height: 300px;
+    margin: 0px auto;
+    /* background-color: green; */
+    /* border: blue 1px solid; */
+}
+
+.username{
+    width: 340px;
+    height: 60px;
+    /* border: 1px solid pink; */
+    margin: 16px auto;
+    position: relative;
+    top: 26px;
+
+}
+
+.password{
+    width: 340px;
+    height: 60px;
+    /* border: 1px solid #000000; */
+    margin: 0px auto;
+    position: relative;
+    top: 26px;
+
+}
+
+.click{
+    width: 180px;
+    height: 50px;
+    margin: 0px auto;
+    /* border: 1px solid red; */
+    position: relative;
+    float: left;
+    left: 216px;
+    
+}
+
+.click_2{
+    width: 180px;
+    height: 50px;
+    margin: 0px auto;
+    /* border: 1px solid red; */
+    position: relative;
+    float: left;
+    left: 160px;
+
+    
+}
+
+.click_3{
+    width: 180px;
+    height: 50px;
+    margin: 0px auto;
+    /* border: 1px solid red; */
+    position: absolute;
+    /* float: left; */
+    top: 547px;
+    left: 787px;
+
+    
+}
+
+
+button{
+    width: 80px;
+    background-color: seagreen;
+    color: #ffffff;
+    position: absolute;
+    /* left: calc(400px / 2 - 80px / 2); */
+    
+    
+}
+
+input{
+    border-radius: 2em;
+    border-color:orange;
+
+}
+
+.inputusername{
+    margin: 20px auto;
+    position: absolute;
+    left: 45px;
+}
+
+.inputpassword{
+    margin: 20px auto;
+    position: absolute;
+    left: 60px;
+
+}
+
+.title{
+    width: 600px;
+    height: 50px;
+    margin: 0px auto;
+    /* border: 1px solid red; */
+    padding: 10px auto;
+    /* float: right; */
+    text-align: center;
+    font-size: 2em;
+    color: brown;
+
+}
+
+.box{
+    width: 600px;
+    margin: 120px auto;
+}
