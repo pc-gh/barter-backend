@@ -14,6 +14,12 @@ spring:
   thymeleaf:
     prefix: classpath:templates/
     suffix=: .html
+    cache: false
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
   #    页面跳转时templates资源可访问
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/

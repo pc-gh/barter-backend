@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/barter/css/index.css">
-    <!-- <script type="text/javascript" src="jquery.min.js"></script> -->
+    <link rel="stylesheet" href="http://localhost:9285/barter/css/index.css">
+     <script type="text/javascript" src="http://localhost:9285/barter/js/jquery-3.4.1.js"></script>
     <!-- <script type="text/javascript" src="index.js"></script> -->
     <title>注册</title>
 
@@ -14,7 +14,7 @@
     <form action="#" name="landform" class="box">
         <div class="title">
             <!-- Welcome to my personal page！ -->
-            <image src="/barter/image/logo.png}"></image>
+            <image src="http://localhost:9285/barter/image/logo.png"></image>
         </div>
         <div class="form">
             <div style="width: 400px;
@@ -24,30 +24,31 @@
                 <div class="username">
                     <div >
                         用戶名：
-                        <input type="text" name="username">
+                        <input type="text" name="userName" id="userName">
                     </div>
                     <div style="top: 18px;position: relative;left: 16px;">
                         密碼：
-                        <input type="text" name="password">
+                        <input type="text" name="password" id="password">
                     </div>
                     <div style="top: 36px;position: relative;left: 16px;">
                         姓名：
-                        <input type="text" name="relname">
+                        <input type="text" name="realName" id="realName">
                     </div>
                     <div style="top: 54px;position: relative;left: 16px;">
                         性别：
-                        <input type="text" name="sex">
+                        <input type="text" name="sex" id="sex">
                     </div>
                     <div style="top: 72px;position: relative;left: -14px;">
                         聯系方式：
-                        <input type="text" name="telphone">
+                        <input type="text" name="tel" id="tel">
                     </div>
                 </div>
                 
             </div>
             <div class="click" style="position: relative;left: 280px;">
-                <button onclick="javascript:window.location.href='./login.html'">注册</button>
-                
+<!--                <button type="button" onclick="javascript:window.location.href='./login.html'">注册</button>-->
+                <button type="button" id="register">注册</button>
+
             </div>
         </div>
     </form>
@@ -55,6 +56,49 @@
 
 
 </body>
+
+<script>
+    $(function () {
+        $("#register").click(
+
+            function () {
+                console.log("进入到注册点击函数");
+                let data=  {"password": $("#password").val(),"realName": $("#realName").val(),"sex": $("#sex").val(), "tel": $("#tel").val(), "userName": $("#userName").val()};
+                $.post({
+                    url:"http://localhost:9285/barter/user/register",
+                    contentType:"application/json",
+                    dataType:"json",
+                    data:JSON.stringify(data),
+                    success:function (data) {
+                        if (data.code == 200){
+                            // sessionStorage.setItem("userId",data.data.userId);
+                            window.location.href="http://localhost:9285/barter/page/login";
+                        }else {
+                            alert(data.msg);
+                        }
+                    },
+                    error:function (data) {
+                        console.log("500：注册失败！！！");
+                    },
+                    complete:function (data) {
+
+                    }
+                })
+            }
+        )
+
+
+
+
+
+
+    })
+
+
+
+
+
+</script>
 
 </html>
 

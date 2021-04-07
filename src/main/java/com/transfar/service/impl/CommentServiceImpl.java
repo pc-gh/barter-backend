@@ -54,7 +54,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Result getCommentListByPostId(int postId) {
         List<Comment> commentList = commentMapper.getCommentByPostId(postId);
-        if(commentList!=null){
+        if(commentList.size()>0){
             return new Result(200,commentList,"success");
 
         }
