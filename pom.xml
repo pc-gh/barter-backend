@@ -82,6 +82,7 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
+<<<<<<< HEAD
 
 <!--        热部署-->
         <dependency>
@@ -92,6 +93,8 @@
             <scope>true</scope>
         </dependency>
 
+=======
+>>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
     </dependencies>
 
 

@@ -11,8 +11,11 @@ import com.transfar.common.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -51,12 +54,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result userRegister(User user) {
+<<<<<<< HEAD
         List<User> userNameList = userMapper.getUserByUserName(user.getUserName());
         System.out.println("##userNameList##"+userNameList);
         if (userNameList.size()>0){
             return new Result(500,"error","该用户已存在！");
         }
 
+=======
+>>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
         int l = userMapper.insert(user);
         if (l>0){
             return new Result(200,l,"success");

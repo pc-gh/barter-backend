@@ -71,7 +71,11 @@ public class PostServiceImpl implements PostService {
     public Result getPostListByUserId(int userId) {
 
         List<Post> postList = postMapper.getPostListByUserId(userId);
+<<<<<<< HEAD
         if (postList.size()>0){
+=======
+        if (postList!=null){
+>>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
             return new Result(200,postList,"success");
         }
 
@@ -81,7 +85,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public Result getPostListByTitle(String title) {
         List<Post> postList = postMapper.getPostListByTitle(title);
+<<<<<<< HEAD
         if(postList.size()>0){
+=======
+        if(postList!=null){
+>>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
             return new Result(200,postList,"success");
 
         }
