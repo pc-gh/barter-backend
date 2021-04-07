@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.transfar.mapper.CommentMapper">
+
+    <resultMap id="BaseResultMap" type="com.transfar.entity.Comment">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result property="userId" column="user_id" jdbcType="INTEGER"></result>
+        <result property="easyComment" column="easy_comment" jdbcType="VARCHAR"></result>
+        <result property="detailComment" column="detail_comment" jdbcType="VARCHAR"></result>
+        <result property="postId" column="post_id" jdbcType="INTEGER"></result>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"></result>
+        <result property="status" column="status" jdbcType="INTEGER"></result>
+
+    </resultMap>
+
+    <select id="getCommentByPostId" resultMap="BaseResultMap">
+        select * from comment where post_id = #{postId} and status = 1
+
+
+    </select>
+
+    <update id="updateStatusById" parameterType="com.transfar.entity.Comment">
+        update comment set status = #{status} where id= #{id}
+
+
+    </update>
+
+    <update id="updateStatusByUserId" parameterType="com.transfar.entity.Comment">
+        update comment set status = #{status} where user_id= #{userId}
+
+
+    </update>
+
+    <update id="updateStatusByPostId" parameterType="com.transfar.entity.Comment">
+        update comment set status = #{status} where post_id= #{postId}
+
+
+    </update>
+
+    <update id="update" parameterType="com.transfar.entity.Comment">
+        update comment
+         <set>
+             <if test="easyComment!='' and easyComment!=null">
+                 easy_comment = #{easyComment,jdbcType=VARCHAR},
+
+             </if>
+             <if test="detailComment!='' and detailComment!=null">
+                 detail_comment = #{detailComment,jdbcType=VARCHAR},
+
+             </if>
+             <if test="status!='' and status!=null">
+                 status = #{status,jdbcType=INTEGER},
+
+             </if>
+
+         </set>
+         where id = #{id}
+
+    </update>
+
+    <insert id="insert" parameterType="com.transfar.entity.Comment" useGeneratedKeys="true" keyProperty="id">
+        insert into comment(user_id,post_id,easy_comment,detail_comment,create_time,status) values(#{userId},#{postId},#{easyComment},#{detailComment},#{createTime},1)
+
+    </insert>
+
+    <delete id="deleteByPrimeryKey">
+        delete from comment where id = #{id}
+    </delete>
+
+    <delete id="deleteByPostId">
+        delete from comment where post_id = #{postId}
+    </delete>
+
+</mapper>
