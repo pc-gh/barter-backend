@@ -4,6 +4,7 @@ import com.transfar.entity.User;
 import com.transfar.service.impl.UserServiceImpl;
 import com.transfar.common.Result;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -72,6 +73,21 @@ public class UserController {
             return new Result();
 
         }
+    }
+
+    @PostMapping(value = "/getUserByName",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation("通过用户名查找用户")
+    public Result getUserByUserName(String userName){
+        try{
+
+            return userService.getUserByName(userName);
+        }catch (Exception e){
+            System.out.println(errorName+"##getUserByUserName##"+e.getMessage());
+            return new Result();
+
+        }
+
+
     }
 
 

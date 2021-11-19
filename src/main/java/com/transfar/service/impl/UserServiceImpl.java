@@ -11,11 +11,8 @@ import com.transfar.common.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
->>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -40,6 +37,19 @@ public class UserServiceImpl implements UserService {
         System.out.println("=============================================UserImpl，getUserById："+user+"=============================================");
         return new User();
     }
+    
+    @Override
+    public Result getUserByName(String userName){
+        System.out.println("=============================================UserImpl，getUserByName："+userName+"=============================================");
+        List<User> userByUserName = userMapper.getUserByUserName(userName);
+        if (userByUserName!=null){
+
+            return new Result(200,userByUserName,"success");
+        }
+
+        return null;
+
+    }
 
     @Override
     public Result userLogin(User user) {
@@ -54,15 +64,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result userRegister(User user) {
-<<<<<<< HEAD
         List<User> userNameList = userMapper.getUserByUserName(user.getUserName());
         System.out.println("##userNameList##"+userNameList);
         if (userNameList.size()>0){
             return new Result(500,"error","该用户已存在！");
         }
 
-=======
->>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
         int l = userMapper.insert(user);
         if (l>0){
             return new Result(200,l,"success");

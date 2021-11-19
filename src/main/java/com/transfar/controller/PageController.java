@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/page")
+//@RequestMapping("/page")
 @Api(tags = "页面跳转接口")
 public class PageController {
 

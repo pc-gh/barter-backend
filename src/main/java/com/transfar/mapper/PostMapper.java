@@ -1,6 +1,7 @@
 package com.transfar.mapper;
 
 
+import com.transfar.dto.PostDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import com.transfar.entity.Post;

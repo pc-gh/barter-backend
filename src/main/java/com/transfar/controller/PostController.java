@@ -1,6 +1,7 @@
 package com.transfar.controller;
 
 import com.sun.org.apache.regexp.internal.RE;
+import com.transfar.dto.PostDto;
 import com.transfar.entity.Post;
 import com.transfar.common.Result;
 import com.transfar.service.PostService;
@@ -22,7 +23,7 @@ public class PostController {
     @Autowired
     PostServiceImpl postServiceImpl;
 
-    @ApiOperation("发帖")
+    @ApiOperation("上传帖子")
     @PostMapping(value = "/addPost",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Result addPost(@RequestBody Post post){
         try{
@@ -49,7 +50,7 @@ public class PostController {
     }
 
 
-    @ApiOperation("删帖")
+    @ApiOperation("删除帖子")
     @PostMapping(value = "/deletePost/{postId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Result deletePost(@PathVariable("postId") int postId){
         try{
@@ -64,11 +65,11 @@ public class PostController {
     }
 
 
-    @GetMapping(value = "/getPostList/{userId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/getPostList",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("获取帖子")
-    public Result getPostListByUserId(@PathVariable("userId") int userId){
+    public Result getPostListByUserId(@RequestBody PostDto postDto){
         try{
-            return postServiceImpl.getPostListByUserId(userId);
+            return postServiceImpl.getPostListByUserId(postDto);
 
         }catch (Exception e){
             System.out.println(errorName+"PostController##getPostListByUserId##"+e.getMessage());
@@ -79,22 +80,16 @@ public class PostController {
     }
 
     @ApiOperation("标题模糊搜索帖子")
-    @GetMapping(value = "/getPostListByTitle/{title}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Result getPostListByTitle(@PathVariable("title") String title){
+    @PostMapping(value = "/getPostListByTitle",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result getPostListByTitle(@RequestBody PostDto postDto){
         try{
-            return postServiceImpl.getPostListByTitle(title);
+            return postServiceImpl.getPostListByTitle(postDto);
         }catch (Exception e){
             System.out.println(errorName+"PostController##getPostListByTitle##"+e.getMessage());
             return new Result();
         }
 
     }
-
-
-
-
-
-
 
 
 }

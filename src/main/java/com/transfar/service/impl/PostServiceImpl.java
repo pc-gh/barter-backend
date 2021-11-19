@@ -1,6 +1,8 @@
 package com.transfar.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.transfar.common.Result;
+import com.transfar.dto.PostDto;
 import com.transfar.entity.Comment;
 import com.transfar.entity.Post;
 import com.transfar.mapper.CommentMapper;
@@ -65,17 +67,12 @@ public class PostServiceImpl implements PostService {
 
         }
 
-
-
     @Override
-    public Result getPostListByUserId(int userId) {
+    public Result getPostListByUserId(PostDto postDto) {
 
-        List<Post> postList = postMapper.getPostListByUserId(userId);
-<<<<<<< HEAD
+        PageHelper.startPage(postDto.getPageNum(),postDto.getPageSize());
+        List<Post> postList = postMapper.getPostListByUserId(postDto.getUserId());
         if (postList.size()>0){
-=======
-        if (postList!=null){
->>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
             return new Result(200,postList,"success");
         }
 
@@ -83,13 +80,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Result getPostListByTitle(String title) {
-        List<Post> postList = postMapper.getPostListByTitle(title);
-<<<<<<< HEAD
+    public Result getPostListByTitle(PostDto postDto) {
+
+        PageHelper.startPage(postDto.getPageNum(),postDto.getPageSize());
+        List<Post> postList = postMapper.getPostListByTitle(postDto.getTitle());
         if(postList.size()>0){
-=======
-        if(postList!=null){
->>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
             return new Result(200,postList,"success");
 
         }

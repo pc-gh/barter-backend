@@ -2,6 +2,7 @@ package com.transfar.controller;
 
 
 import com.transfar.common.Result;
+import com.transfar.dto.CommentDto;
 import com.transfar.entity.Comment;
 import com.transfar.service.impl.CommentServiceImpl;
 import io.swagger.annotations.Api;
@@ -50,13 +51,13 @@ public class CommentController {
 
     }
 
-    @GetMapping(value = "/getCommentList/{postId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation("获取帖子评论列表")
-    public Result getCommentList(@PathVariable("postId") int postId){
+    @PostMapping(value = "/getCommentList",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation("获取评论列表")
+    public Result getCommentList(@RequestBody CommentDto commentDto){
 
         try{
-
-            return commentService.getCommentListByPostId(postId);
+            System.out.println(errorName+"getCommentList##"+commentDto);
+            return commentService.getCommentListByPostId(commentDto);
         }catch(Exception e){
             System.out.println(errorName+"##getCommentList##"+e.getMessage());
             return new Result();
@@ -77,8 +78,5 @@ public class CommentController {
         }
 
     }
-
-
-
 
 }

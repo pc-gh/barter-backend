@@ -1,6 +1,9 @@
 package com.transfar.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.transfar.common.Result;
+import com.transfar.dto.CommentDto;
 import com.transfar.entity.Comment;
 import com.transfar.mapper.CommentMapper;
 import com.transfar.service.CommentService;
@@ -52,17 +55,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Result getCommentListByPostId(int postId) {
-        List<Comment> commentList = commentMapper.getCommentByPostId(postId);
-<<<<<<< HEAD
+    public Result getCommentListByPostId(CommentDto commentDto) {
+        PageHelper.startPage(commentDto.getPageNum(),commentDto.getPageSize());
+        List<Comment> commentList = commentMapper.getCommentByPostId(commentDto.getPostId());
+        System.out.println("CommentServiceImpl-getCommentListByPostId-commentList:"+commentList.toString());
         if(commentList.size()>0){
-=======
-        if(commentList!=null){
->>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
+
             return new Result(200,commentList,"success");
-
         }
-
         return new Result();
     }
 }

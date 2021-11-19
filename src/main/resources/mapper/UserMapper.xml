@@ -59,38 +59,7 @@
     </update>
 
     <insert id="insert" parameterType="com.transfar.entity.User" useGeneratedKeys="true" keyProperty="id">
-<<<<<<< HEAD
         insert into user(user_name,password,real_name,sex,status,tel) values(#{userName},#{password},#{realName},#{sex},1,#{tel})
-=======
-        insert into user(user_name,password,real_name,sex,status,tel) values
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="userName!=null and userName!=''">
-                user_name=#{userName,jdbcType=VARCHAR},
-
-            </if>
-            <if test="password!=null and password!=''">
-                password=#{password,jdbcType=VARCHAR},
-
-            </if>
-
-            <if test="realName!=null and realName!=''">
-                real_name=#{realName,jdbcType=VARCHAR},
-
-            </if>
-            <if test="sex!=null and sex!=''">
-                sex=#{sex,jdbcType=VARCHAR},
-
-            </if>
-
-            status = 1,
-            <if test="tel!=null and tel!=''">
-                tel=#{tel,jdbcType=VARCHAR},
-
-            </if>
-
-        </trim>
-
->>>>>>> 5a59ffc706500563eb6d6949433453e0a171913c
     </insert>
 
     <select id="login" parameterType="string" resultMap="BaseResultMap">

@@ -1,5 +1,6 @@
 package com.transfar.mapper;
 
+import com.github.pagehelper.PageInfo;
 import com.transfar.entity.Comment;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;

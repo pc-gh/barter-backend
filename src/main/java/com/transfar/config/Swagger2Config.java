@@ -28,7 +28,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("易物系统后端api")
+                .title("易物后端api")
                 .description("简单优雅的restful风格")
                 .version("v1.0")
                 .build();
