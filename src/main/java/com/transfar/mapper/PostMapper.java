@@ -25,4 +25,7 @@ public interface PostMapper {
     //    插入，注册新增用户
     int insert(Post post);
 
+//    获取总帖子数
+    int totalCount();
+
 }

@@ -45,8 +45,6 @@ public class PostController {
             System.out.println(errorName+"PostController##editPost##"+e.getMessage());
             return new Result();
         }
-
-
     }
 
 
@@ -55,15 +53,11 @@ public class PostController {
     public Result deletePost(@PathVariable("postId") int postId){
         try{
             return postServiceImpl.deletePost(postId);
-
         }catch (Exception e){
             System.out.println(errorName+"PostController##deletePost##"+e.getMessage());
             return new Result();
-
         }
-
     }
-
 
     @PostMapping(value = "/getPostList",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("获取帖子")
@@ -91,5 +85,15 @@ public class PostController {
 
     }
 
+    @ApiOperation("获取帖子总数")
+    @GetMapping(value = "/getTotalCount",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result getTotalCount(){
+        try{
+            return postServiceImpl.totalCount();
+        }catch (Exception e){
+            System.out.println(errorName+"PostController##getTotalCount##"+e.getMessage());
+            return new Result();
+        }
+    }
 
 }

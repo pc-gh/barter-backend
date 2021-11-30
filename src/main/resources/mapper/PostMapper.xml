@@ -93,6 +93,10 @@
 
     </select>
 
+    <select id="totalCount" resultType="int">
+        select count(*) from post
+    </select>
+
 
 
 

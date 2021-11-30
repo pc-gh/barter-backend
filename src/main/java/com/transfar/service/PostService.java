@@ -13,5 +13,6 @@ public interface PostService {
     Result deletePost(int id);
     Result getPostListByUserId(PostDto postDto);
     Result getPostListByTitle(PostDto postDto);
+    Result totalCount();
 
 }
