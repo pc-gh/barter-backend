@@ -25,16 +25,12 @@ public class UserController {
     @ApiOperation("用户登录")
     @PostMapping(value = "/login",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Result userLogin(@RequestBody User user){
-
         try{
-
             return userService.userLogin(user);
-
 
         }catch (Exception e){
             System.out.println(errorName+"##userLogin##"+e.getMessage());
             return new Result();
-
         }
     }
 

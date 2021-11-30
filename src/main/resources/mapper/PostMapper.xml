@@ -94,7 +94,7 @@
     </select>
 
     <select id="totalCount" resultType="int">
-        select count(*) from post
+        select count(*) from post where status = 1
     </select>
 
 

@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
             return new Result(200,userByUserName,"success");
         }
 
-        return null;
+        return new Result();
 
     }
 
@@ -55,11 +55,10 @@ public class UserServiceImpl implements UserService {
     public Result userLogin(User user) {
         User userResult = userMapper.login(user.getUserName(), user.getPassword());
         System.out.println(userResult.toString());
-        if (userResult!=null){
-            return new Result(200,userResult,"success");
+        if (userResult != null) {
+            return new Result(200, userResult, "success");
         }
-
-        return null;
+        return new Result();
     }
 
     @Override

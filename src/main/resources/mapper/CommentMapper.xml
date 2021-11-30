@@ -74,18 +74,18 @@
     </delete>
 
     <select id="totalCountByPostId" parameterType="int" resultType="int">
-        select count(*) from comment where post_id = #{postId}
+        select count(*) from comment where post_id = #{postId} and status = 1
 
     </select>
 
     <select id="getCommentByUserId" parameterType="int" resultMap="BaseResultMap">
-        select * from comment where user_id = #{userId}
+        select * from comment where user_id = #{userId} and status = 1
 
     </select>
 
     <select id="totalUserCommentCount" parameterType="int" resultType="int">
 
-        select count(*) from comment where user_id = #{userId}
+        select count(*) from comment where user_id = #{userId} and status = 1
     </select>
 
 </mapper>

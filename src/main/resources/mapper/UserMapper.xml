@@ -63,7 +63,7 @@
     </insert>
 
     <select id="login" parameterType="string" resultMap="BaseResultMap">
-        select * from user where user_name =#{userName} and password=#{password}
+        select * from user where user_name =#{userName} and password=#{password} and status=1
 
     </select>
 
