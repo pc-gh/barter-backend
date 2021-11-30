@@ -10,4 +10,7 @@ public interface CommentService {
     Result editeComment(Comment comment);
     Result deleteComment(int id);
     Result getCommentListByPostId(CommentDto commentDto);
+    Result totalCountByPostId(int postId);
+    Result getCommentListByUserId(CommentDto commentDto);
+    Result totalUserCommentCount(int userId);
 }

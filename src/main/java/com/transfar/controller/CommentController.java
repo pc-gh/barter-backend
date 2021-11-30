@@ -1,6 +1,7 @@
 package com.transfar.controller;
 
 
+import com.sun.org.apache.regexp.internal.RESyntaxException;
 import com.transfar.common.Result;
 import com.transfar.dto.CommentDto;
 import com.transfar.entity.Comment;
@@ -52,7 +53,7 @@ public class CommentController {
     }
 
     @PostMapping(value = "/getCommentList",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation("获取评论列表")
+    @ApiOperation("根据帖子id获取评论列表")
     public Result getCommentList(@RequestBody CommentDto commentDto){
 
         try{
@@ -68,15 +69,47 @@ public class CommentController {
     @PostMapping(value = "/editComment",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("修改评论(废弃)")
     public Result editComment(@RequestBody Comment comment){
-
         try{
-
             return commentService.editeComment(comment);
         }catch(Exception e){
             System.out.println(errorName+"##editeComment##"+e.getMessage());
             return new Result();
         }
-
     }
 
+    @ApiOperation("获取帖子评论总数")
+    @GetMapping(value = "/getTotalCountByPostId/{postId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result getTotalCountByPostId(@PathVariable("postId") int postId){
+        try{
+            return commentService.totalCountByPostId(postId);
+        }catch(Exception e){
+            System.out.println(errorName+"##getTotalCountByPostId##"+e.getMessage());
+            return new Result();
+
+        }
+    }
+
+    @ApiOperation("根据用户id分页获取评论")
+    @PostMapping(value = "/getCommentListByUserId",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result getCommentListByUserId(@RequestBody CommentDto commentDto){
+//        int userId = commentDto.getUserId();
+
+        try{
+            return commentService.getCommentListByUserId(commentDto);
+        }catch(Exception e){
+            System.out.println(errorName+"##getCommentListByUserId##"+e.getMessage());
+            return new Result();
+        }
+    }
+
+    @ApiOperation("获取用户评论总数")
+    @GetMapping(value = "/totalUserCommentCount/{userId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result totalUserCommentCount(@PathVariable("userId") int userId){
+        try{
+            return commentService.totalUserCommentCount(userId);
+        }catch(Exception e){
+            System.out.println(errorName+"##totalUserCommentCount##"+e.getMessage());
+            return new Result();
+        }
+    }
 }

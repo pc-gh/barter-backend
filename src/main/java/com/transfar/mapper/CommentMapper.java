@@ -25,5 +25,11 @@ public interface CommentMapper {
     //    插入，帖子
     int insert(Comment comment);
 
+    int totalCountByPostId(int postId);
+
+    List<Comment> getCommentByUserId(int userId);
+
+    int totalUserCommentCount(int userId);
+
 
 }

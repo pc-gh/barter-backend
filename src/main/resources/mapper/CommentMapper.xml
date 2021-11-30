@@ -73,4 +73,19 @@
         delete from comment where post_id = #{postId}
     </delete>
 
+    <select id="totalCountByPostId" parameterType="int" resultType="int">
+        select count(*) from comment where post_id = #{postId}
+
+    </select>
+
+    <select id="getCommentByUserId" parameterType="int" resultMap="BaseResultMap">
+        select * from comment where user_id = #{userId}
+
+    </select>
+
+    <select id="totalUserCommentCount" parameterType="int" resultType="int">
+
+        select count(*) from comment where user_id = #{userId}
+    </select>
+
 </mapper>

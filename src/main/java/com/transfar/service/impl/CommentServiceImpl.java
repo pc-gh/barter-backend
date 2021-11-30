@@ -65,4 +65,42 @@ public class CommentServiceImpl implements CommentService {
         }
         return new Result();
     }
+
+    @Override
+    public Result totalCountByPostId(int postId){
+
+        int count = commentMapper.totalCountByPostId(postId);
+        System.out.println("##########count:"+count);
+        if (count>0){
+            return new Result(200,count,"success");
+        }
+
+        return new Result();
+    }
+
+    @Override
+    public Result getCommentListByUserId(CommentDto commentDto){
+
+        PageHelper.startPage(commentDto.getPageNum(),commentDto.getPageSize());
+        List<Comment> commentListByUserId = commentMapper.getCommentByUserId(commentDto.getUserId());
+        System.out.println("CommentServiceImpl-getCommentListByUserId-commentList:"+commentListByUserId.toString());
+        if (commentListByUserId.size()>0){
+            return new Result(200,commentListByUserId,"success");
+        }
+
+        return new Result();
+    }
+
+    @Override
+    public Result totalUserCommentCount(int userId){
+        int count = commentMapper.totalUserCommentCount(userId);
+        if (count>0){
+
+            return new Result(200,count,"success");
+        }
+
+        return new Result();
+
+    }
+
 }
