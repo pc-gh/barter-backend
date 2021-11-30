@@ -90,4 +90,16 @@ public class PostServiceImpl implements PostService {
         }
         return new Result();
     }
+
+    @Override
+    public Result totalCount(){
+
+        int count = postMapper.totalCount();
+        if(count>0){
+            return new Result(200,count,"success");
+        }
+
+        return new Result();
+
+    }
 }
