@@ -38,7 +38,7 @@ public class CommentController {
 
     }
 
-    @PostMapping(value = "/deleteComment/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/deleteComment/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("删除评论")
     public Result deleteComment(@PathVariable("id") int id){
 
@@ -53,7 +53,7 @@ public class CommentController {
     }
 
     @PostMapping(value = "/getCommentList",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation("根据帖子id获取评论列表")
+    @ApiOperation("分页帖子id获取评论列表")
     public Result getCommentList(@RequestBody CommentDto commentDto){
 
         try{
@@ -89,7 +89,7 @@ public class CommentController {
         }
     }
 
-    @ApiOperation("根据用户id分页获取评论")
+    @ApiOperation("分页用户id分页获取评论")
     @PostMapping(value = "/getCommentListByUserId",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Result getCommentListByUserId(@RequestBody CommentDto commentDto){
 //        int userId = commentDto.getUserId();

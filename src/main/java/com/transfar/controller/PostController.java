@@ -49,7 +49,7 @@ public class PostController {
 
 
     @ApiOperation("删除帖子")
-    @PostMapping(value = "/deletePost/{postId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/deletePost/{postId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Result deletePost(@PathVariable("postId") int postId){
         try{
             return postServiceImpl.deletePost(postId);
@@ -60,7 +60,7 @@ public class PostController {
     }
 
     @PostMapping(value = "/getPostList",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation("获取帖子")
+    @ApiOperation("分页获取帖子")
     public Result getPostListByUserId(@RequestBody PostDto postDto){
         try{
             return postServiceImpl.getPostListByUserId(postDto);
@@ -73,7 +73,7 @@ public class PostController {
 
     }
 
-    @ApiOperation("标题模糊搜索帖子")
+    @ApiOperation("分页标题模糊搜索帖子")
     @PostMapping(value = "/getPostListByTitle",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Result getPostListByTitle(@RequestBody PostDto postDto){
         try{

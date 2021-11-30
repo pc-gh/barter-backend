@@ -63,9 +63,9 @@ public class UserController {
 
     }
 
-    @PostMapping(value = "/deleteUser",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/deleteUser/{userId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("删除用户")
-    public Result deleteUser(int id){
+    public Result deleteUser(@PathVariable("userId") int id){
         try{
             return userService.deleteUser(id);
         }catch (Exception e){
@@ -75,20 +75,16 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/getUserByName",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/getUserByName/{userName}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("通过用户名查找用户")
-    public Result getUserByUserName(String userName){
+    public Result getUserByUserName(@PathVariable("userName") String userName){
         try{
 
             return userService.getUserByName(userName);
         }catch (Exception e){
             System.out.println(errorName+"##getUserByUserName##"+e.getMessage());
             return new Result();
-
         }
-
-
     }
-
 
 }
