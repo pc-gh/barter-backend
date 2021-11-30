@@ -12,6 +12,8 @@ public class CommentDto{
     Integer postId;
     @ApiModelProperty("当前页数")
     int pageNum;
+    @ApiModelProperty("用户id")
+    int userId;
     @ApiModelProperty("页面大小")
     int pageSize;
 }
