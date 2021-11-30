@@ -102,4 +102,16 @@ public class PostServiceImpl implements PostService {
         return new Result();
 
     }
+
+    @Override
+    public Result getPostByPostId(int postId){
+        Post postByPostId = postMapper.getPostByPrimeryKey(postId);
+        if(postByPostId!=null){
+            return new Result(200,postByPostId,"success");
+
+        }
+
+        return new Result();
+
+    }
 }

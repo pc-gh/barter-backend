@@ -14,5 +14,6 @@ public interface PostService {
     Result getPostListByUserId(PostDto postDto);
     Result getPostListByTitle(PostDto postDto);
     Result totalCount();
+    Result getPostByPostId(int postId);
 
 }

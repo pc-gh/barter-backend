@@ -96,4 +96,14 @@ public class PostController {
         }
     }
 
+    @ApiOperation("获取帖子")
+    @GetMapping(value = "/getPostByPostId/{postId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result getPostByPostId(@PathVariable("postId")  int postId){
+        try{
+            return postServiceImpl.getPostByPostId(postId);
+        }catch(Exception e){
+            System.out.println(errorName+"PostController##getPostByPostId##"+e.getMessage());
+            return new Result();
+        }
+    }
 }

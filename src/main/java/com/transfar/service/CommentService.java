@@ -13,4 +13,5 @@ public interface CommentService {
     Result totalCountByPostId(int postId);
     Result getCommentListByUserId(CommentDto commentDto);
     Result totalUserCommentCount(int userId);
+
 }
