@@ -2,6 +2,7 @@ package com.transfar.mapper;
 
 import com.github.pagehelper.PageInfo;
 import com.transfar.entity.Comment;
+import com.transfar.vo.CommentVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,8 @@ public interface CommentMapper {
     List<Comment> getCommentByUserId(int userId);
 
     int totalUserCommentCount(int userId);
+
+    List<CommentVo> getCommentByPostIdVo(int postId);
 
 
 }

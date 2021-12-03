@@ -58,7 +58,8 @@ public class CommentController {
 
         try{
             System.out.println(errorName+"getCommentList##"+commentDto);
-            return commentService.getCommentListByPostId(commentDto);
+//            return commentService.getCommentListByPostId(commentDto);
+            return commentService.getCommentByPostIdVo(commentDto);
         }catch(Exception e){
             System.out.println(errorName+"##getCommentList##"+e.getMessage());
             return new Result();

@@ -15,6 +15,18 @@
 
     </resultMap>
 
+    <resultMap id="BaseResultMapVo" type="com.transfar.vo.CommentVo">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result property="userId" column="user_id" jdbcType="INTEGER"></result>
+        <result property="easyComment" column="easy_comment" jdbcType="VARCHAR"></result>
+        <result property="detailComment" column="detail_comment" jdbcType="VARCHAR"></result>
+        <result property="postId" column="post_id" jdbcType="INTEGER"></result>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"></result>
+        <result property="status" column="status" jdbcType="INTEGER"></result>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"></result>
+
+    </resultMap>
+
     <select id="getCommentByPostId" resultMap="BaseResultMap">
         select * from comment where post_id = #{postId} and status = 1
 
@@ -86,6 +98,10 @@
     <select id="totalUserCommentCount" parameterType="int" resultType="int">
 
         select count(*) from comment where user_id = #{userId} and status = 1
+    </select>
+
+    <select id="getCommentByPostIdVo" resultMap="BaseResultMapVo">
+        SELECT comment.id,comment.user_id,user.user_name,comment.post_id,comment.easy_comment,comment.detail_comment,comment.create_time,comment.status from comment,user WHERE comment.user_id=user.id  and comment.post_id=#{postId} and comment.status = 1
     </select>
 
 </mapper>

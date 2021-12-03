@@ -7,6 +7,7 @@ import com.transfar.dto.CommentDto;
 import com.transfar.entity.Comment;
 import com.transfar.mapper.CommentMapper;
 import com.transfar.service.CommentService;
+import com.transfar.vo.CommentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,18 @@ public class CommentServiceImpl implements CommentService {
         PageHelper.startPage(commentDto.getPageNum(),commentDto.getPageSize());
         List<Comment> commentList = commentMapper.getCommentByPostId(commentDto.getPostId());
         System.out.println("CommentServiceImpl-getCommentListByPostId-commentList:"+commentList.toString());
+        if(commentList.size()>0){
+
+            return new Result(200,commentList,"success");
+        }
+        return new Result();
+    }
+
+    @Override
+    public Result getCommentByPostIdVo(CommentDto commentDto) {
+        PageHelper.startPage(commentDto.getPageNum(),commentDto.getPageSize());
+        List<CommentVo> commentList = commentMapper.getCommentByPostIdVo(commentDto.getPostId());
+        System.out.println("CommentServiceImpl-getCommentListByPostIdVo-commentList:"+commentList.toString());
         if(commentList.size()>0){
 
             return new Result(200,commentList,"success");
