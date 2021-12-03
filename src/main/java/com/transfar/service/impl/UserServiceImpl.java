@@ -27,15 +27,15 @@ public class UserServiceImpl implements UserService {
     CommentMapper commentMapper;
 
     @Override
-    public User getUserById(int id) {
+    public Result getUserById(int id) {
         System.out.println("=============================================UserImpl，getUserById："+id+"=============================================");
         User user = userMapper.getUserByPrimeryKey(id);
         if (user!=null){
 
-            return user;
+            return new Result(200,user,"success");
         }
         System.out.println("=============================================UserImpl，getUserById："+user+"=============================================");
-        return new User();
+        return new Result();
     }
     
     @Override

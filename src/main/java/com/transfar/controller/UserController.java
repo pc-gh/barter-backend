@@ -83,4 +83,18 @@ public class UserController {
         }
     }
 
+
+    @ApiOperation("通过用户Id查找用户")
+    @GetMapping(value = "/getUserByUserId/{userId}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Result getUserByUserId(@PathVariable("userId") int userId){
+        try{
+            return userService.getUserById(userId);
+
+        }catch(Exception e){
+            System.out.println(errorName+"##getUserByUserId##"+e.getMessage());
+            return new Result();
+        }
+    }
+
+
 }
